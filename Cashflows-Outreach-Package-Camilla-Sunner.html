@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Camilla's Special Package — MDB Growth Capital</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--or:#FF6100;--or-h:#E65500;--ne:#FFCC89;--ne-d:rgba(255,204,137,.1);
+--dk:#1a1008;--dk-s:#241709;--wh:#fff;--of:#f9fafb;--lt:#f3f4f6;
+--g3:#d1d5db;--g4:#9ca3af;--g5:#6b7280;--g6:#4b5563;
+--red:#ef4444;--grn:#22c55e;--amb:#f59e0b;
+--f:'Outfit',system-ui,sans-serif;--mx:880px;
+}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;font-size:20px}
+body{font-family:var(--f);color:var(--dk);line-height:1.65;background:var(--wh);overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}
+.rv.on{opacity:1;transform:none}
+.d1{transition-delay:.07s}.d2{transition-delay:.14s}.d3{transition-delay:.21s}
+
+/* Side Nav */
+.sn{position:fixed;left:16px;top:50%;transform:translateY(-50%);z-index:100;display:flex;flex-direction:column;gap:8px}
+.sn a{width:8px;height:8px;border-radius:50%;background:var(--g3);display:block;transition:all .25s;position:relative}
+.sn a.ac{background:var(--or);transform:scale(1.5)}
+.sn a::after{content:attr(data-t);position:absolute;left:18px;top:50%;transform:translateY(-50%);font-size:.6rem;color:var(--g5);white-space:nowrap;opacity:0;transition:opacity .15s;pointer-events:none;font-weight:500}
+.sn a:hover::after{opacity:1}
+@media(max-width:900px){.sn{display:none}}
+
+/* Layout */
+.w{max-width:var(--mx);margin:0 auto;padding:0 24px}
+section{padding:80px 0}
+@media(max-width:640px){section{padding:56px 0}.w{padding:0 16px}}
+.dark{background:var(--dk);color:var(--wh)}
+.dark h1,.dark h2,.dark h3,.dark p,.dark li,.dark td,.dark th,.dark strong{color:var(--wh)}
+.alt{background:var(--of)}
+
+/* Typography */
+h1{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;line-height:1.08;letter-spacing:-.03em;margin-bottom:16px}
+h2{font-size:clamp(1.3rem,3vw,1.8rem);font-weight:700;line-height:1.12;letter-spacing:-.02em;margin-bottom:12px}
+h3{font-size:1rem;font-weight:700;margin-bottom:8px}
+p{margin-bottom:14px;font-size:.95rem}
+.label{font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--or);margin-bottom:6px}
+.dark .label{color:var(--ne)}
+.sub{color:var(--g5);font-size:.92rem;line-height:1.6}
+.dark .sub{color:var(--g4)}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:8px;font:600 .88rem/1 var(--f);border:0;cursor:pointer;transition:all .15s}
+.btn:active{transform:scale(.97)}
+.b-or{background:var(--or);color:var(--wh)}.b-or:hover{background:var(--or-h)}
+.b-ne{background:var(--ne);color:var(--dk);font-weight:700}.b-ne:hover{background:#f0b860}
+.b-gh{background:transparent;color:var(--wh);border:1.5px solid rgba(255,255,255,.2)}.b-gh:hover{border-color:rgba(255,255,255,.5)}
+
+/* Top Banner */
+.tb{background:var(--dk);color:var(--g4);text-align:center;padding:10px 16px;font-size:.7rem;font-weight:500;border-bottom:1px solid rgba(255,255,255,.06)}
+.tb strong{color:var(--ne)}
+
+/* Hero */
+.hero{min-height:90vh;display:flex;align-items:center;padding-top:40px;padding-bottom:60px}
+.hero h1{font-size:clamp(2rem,5vw,3rem)}
+.hero h1 em{font-style:normal;color:var(--or)}
+.vid-box{width:100%;aspect-ratio:16/9;background:var(--dk-s);border:1px solid rgba(255,255,255,.08);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:24px 0;cursor:pointer;position:relative;overflow:hidden}
+.vid-box::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at center,rgba(255,204,137,.03),transparent 60%)}
+.pb{width:60px;height:60px;border-radius:50%;background:var(--or);display:flex;align-items:center;justify-content:center;transition:transform .2s}
+.pb:hover{transform:scale(1.06)}
+.pb::after{content:'';border-style:solid;border-width:9px 0 9px 16px;border-color:transparent transparent transparent var(--wh);margin-left:3px}
+.callout{background:rgba(255,204,137,.06);border-left:3px solid var(--ne);padding:18px 22px;border-radius:0 8px 8px 0;margin:18px 0}
+.dark .callout{background:rgba(255,204,137,.08)}
+.callout p{margin-bottom:6px;font-size:.9rem}
+.callout p:last-child{margin-bottom:0}
+.wild{font-size:1.15rem;font-weight:700;color:var(--ne)}
+
+/* Cards Grid */
+.cg{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin:20px 0}
+.cd{background:var(--wh);border:1px solid #e5e7eb;border-radius:10px;padding:22px;transition:border-color .15s}
+.cd:hover{border-color:var(--or)}
+.cd .num{width:28px;height:28px;background:var(--or);color:var(--wh);border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.78rem;margin-bottom:10px}
+
+/* CTA Grid */
+.ctg{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+@media(max-width:600px){.ctg{grid-template-columns:1fr}}
+.ctc{padding:28px 22px;border-radius:10px;text-align:center;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04)}
+.ctc h3{margin-bottom:6px}.ctc p{font-size:.85rem;opacity:.75;margin-bottom:14px}
+
+/* Tables */
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:.82rem}
+th{text-align:left;padding:10px 14px;background:var(--or);color:var(--wh);font-weight:600;font-size:.7rem;letter-spacing:.04em;text-transform:uppercase}
+th:first-child{border-radius:6px 0 0 0}th:last-child{border-radius:0 6px 0 0}
+td{padding:10px 14px;border-bottom:1px solid #e5e7eb;vertical-align:top}
+tr:nth-child(even){background:var(--of)}
+.impact{color:var(--grn);font-weight:700}
+.total-row{background:rgba(255,97,0,.04)!important;font-weight:700}
+.dark table th{background:rgba(255,255,255,.1)}
+.dark table td{border-color:rgba(255,255,255,.08);color:rgba(255,255,255,.85)}
+.dark table tr:nth-child(even){background:rgba(255,255,255,.03)}
+
+/* Traffic Lights */
+.tl{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:100px;font-size:.72rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.tl.red{background:rgba(239,68,68,.1);color:var(--red)}
+.tl.yel{background:rgba(245,158,11,.1);color:var(--amb)}
+.tl.grn{background:rgba(34,197,94,.1);color:var(--grn)}
+.tl .dot{width:8px;height:8px;border-radius:50%}
+.tl.red .dot{background:var(--red)}.tl.yel .dot{background:var(--amb)}.tl.grn .dot{background:var(--grn)}
+
+/* Biggest Leak */
+.bl{background:var(--dk);color:var(--wh);padding:22px;border-radius:10px;margin:20px 0;border-left:4px solid var(--red)}
+.bl h3{color:var(--red);font-size:.9rem;margin-bottom:6px}
+.bl p{color:rgba(255,255,255,.8);margin-bottom:0;font-size:.88rem}
+
+/* Pillars */
+.pg{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin:20px 0}
+.pl{padding:20px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08)}
+.pl .pn{font-size:1.6rem;font-weight:800;color:var(--ne);line-height:1;margin-bottom:6px}
+.pl h3{font-size:.88rem;margin-bottom:4px}
+.pl p{font-size:.82rem;color:rgba(255,255,255,.65);margin-bottom:0}
+.tagline{font-style:italic;color:var(--g4);margin-top:20px;font-size:.95rem;text-align:center}
+
+/* Steps */
+.steps{counter-reset:st;margin:20px 0}
+.stp{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid #e5e7eb;align-items:flex-start}
+.stp:last-child{border-bottom:0}
+.stp::before{counter-increment:st;content:counter(st);width:32px;height:32px;min-width:32px;background:var(--or);color:var(--wh);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.78rem;margin-top:2px}
+.stp-c h3{font-size:.88rem;margin-bottom:2px}
+.stp-c p{font-size:.85rem;color:var(--g5);margin-bottom:0}
+
+/* Week Cards */
+.wk{padding:16px 20px;border-radius:8px;background:var(--wh);border:1px solid #e5e7eb;border-left:3px solid var(--or);margin-bottom:12px}
+.wk .wn{font-size:.68rem;font-weight:700;color:var(--or);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px}
+.wk p{font-size:.85rem;color:var(--g5);margin-bottom:0}
+.qw{background:rgba(34,197,94,.05);border:1px solid rgba(34,197,94,.15);border-radius:8px;padding:16px 20px;margin-top:16px}
+.qw h3{color:var(--grn);margin-bottom:8px;font-size:.88rem}
+.qw li{font-size:.85rem;margin-bottom:6px;list-style:none;padding-left:20px;position:relative}
+.qw li::before{content:'+';position:absolute;left:0;color:var(--grn);font-weight:700}
+
+/* FAQ */
+.fq{border-bottom:1px solid #e5e7eb}
+.fq-q{padding:14px 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-weight:600;font-size:.88rem;user-select:none;gap:10px}
+.fq-q .ic{width:20px;height:20px;min-width:20px;border-radius:5px;background:var(--of);display:flex;align-items:center;justify-content:center;font-size:.75rem;color:var(--g5);transition:transform .25s,background .25s}
+.fq.open .fq-q .ic{transform:rotate(45deg);background:var(--ne-d);color:var(--dk)}
+.fq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;font-size:.85rem;color:var(--g5);line-height:1.7}
+.fq.open .fq-a{max-height:400px;padding-bottom:14px}
+
+/* About */
+.ab{display:flex;gap:20px;align-items:flex-start;margin:16px 0}
+@media(max-width:600px){.ab{flex-direction:column;align-items:center;text-align:center}}
+.av{width:64px;height:64px;border-radius:50%;background:var(--or);display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:var(--wh);font-weight:800;min-width:64px}
+.ab-i h3{font-size:1rem;margin-bottom:1px}
+.ab-i .role{color:var(--g5);font-size:.82rem;margin-bottom:8px}
+.ln-btn{display:inline-block;padding:6px 16px;border-radius:5px;background:var(--or);color:var(--wh);font-size:.78rem;font-weight:600;margin-top:6px;transition:background .15s}
+.ln-btn:hover{background:var(--or-h)}
+
+/* Offer list */
+.ol li{padding:8px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:.88rem;list-style:none;padding-left:24px;position:relative;color:rgba(255,255,255,.85)}
+.ol li::before{content:'+';position:absolute;left:0;color:var(--ne);font-weight:700;font-size:1rem}
+
+/* Footer */
+footer{text-align:center;padding:20px;font-size:.7rem;color:var(--g4);border-top:1px solid rgba(255,255,255,.06)}
+.dark footer{border-top-color:rgba(255,255,255,.06)}
+
+/* Metric cards */
+.mc{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin:16px 0}
+.mt{text-align:center;padding:22px 14px;border-radius:10px;background:var(--of);border:1px solid #e5e7eb}
+.mt .mn{font-size:2rem;font-weight:800;color:var(--or);line-height:1}
+.mt .ml{font-size:.72rem;color:var(--g5);margin-top:4px}
+.dark .mt{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)}
+.dark .mt .ml{color:var(--g4)}
+
+/* Timeline */
+.tl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:16px 0}
+.tl-card{border-radius:10px;overflow:hidden;background:var(--wh);border:1px solid #e5e7eb}
+.tl-hd{padding:10px 16px;font-weight:700;font-size:.82rem;color:var(--wh);background:var(--or)}
+.tl-card ul{padding:14px 16px 16px 30px;font-size:.82rem;color:var(--g5)}
+.tl-card li{margin-bottom:4px}
+
+/* Case Study */
+.cs{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:16px 0}
+.cs-p{padding:20px;border-radius:10px}
+.cs-p.ctx{background:#f1f5f9}
+.cs-p.act{background:var(--wh);border:1px solid #e5e7eb}
+.cs-p.res{background:rgba(255,97,0,.04);border:1px solid rgba(255,97,0,.12)}
+.cs-p h3{font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--g5);margin-bottom:8px}
+
+/* Method Flow */
+.mf{display:flex;gap:6px;margin:20px 0;overflow-x:auto}
+@media(max-width:700px){.mf{flex-direction:column}}
+.ms{flex:1;min-width:120px;padding:16px;border-radius:8px;background:var(--of);border:1px solid #e5e7eb;text-align:center}
+.ms .msn{width:24px;height:24px;background:var(--or);color:var(--wh);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;margin:0 auto 8px}
+.ms h3{font-size:.78rem;margin-bottom:2px}
+.ms p{font-size:.7rem;color:var(--g5);margin-bottom:0}
+.ma{display:flex;align-items:center;color:var(--g3);font-size:1rem}
+@media(max-width:700px){.ma{justify-content:center;transform:rotate(90deg)}}
+
+/* Warning banner */
+.warn{background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.15);border-radius:8px;padding:16px 20px;margin:16px 0}
+.warn p{font-size:.85rem;color:var(--red);margin-bottom:0;font-weight:600}
+
+/* Vertical Priority Matrix */
+.vpm{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:16px 0}
+.vp-card{padding:18px;border-radius:10px;border:1px solid #e5e7eb;background:var(--wh);text-align:center}
+.vp-card.top{border-color:var(--or);border-width:2px;background:rgba(255,97,0,.02)}
+.vp-card .vp-rank{font-size:1.6rem;font-weight:800;color:var(--or);line-height:1}
+.vp-card .vp-name{font-size:.88rem;font-weight:700;margin:6px 0 4px}
+.vp-card .vp-score{font-size:.72rem;color:var(--g5)}
+</style>
+</head>
+<body>
+
+<!-- TOP BANNER -->
+<div class="tb">Built for <strong>Camilla Sunner</strong>, Chief Commercial Officer at Cashflows — by Jean Mundabi Fala, MDB Growth Capital</div>
+
+<!-- SIDE NAV -->
+<nav class="sn" id="sideNav">
+<a href="#s1" data-t="Package" class="ac"></a><a href="#s2" data-t="Inside"></a><a href="#s3" data-t="Why Now"></a><a href="#s4" data-t="Who Built This"></a><a href="#s5" data-t="The Gift"></a><a href="#s6" data-t="Get Started"></a><a href="#s7" data-t="Attraction"></a><a href="#s8" data-t="Alignment"></a><a href="#s9" data-t="Activation"></a><a href="#s10" data-t="Money Levers"></a><a href="#s11" data-t="Funnel Cascade"></a><a href="#s12" data-t="Full Funnel"></a><a href="#s13" data-t="Competitors"></a><a href="#s14" data-t="The Gap"></a><a href="#s15" data-t="Vertical Matrix"></a><a href="#s16" data-t="90 Day Plan 1"></a><a href="#s17" data-t="90 Day Plan 2"></a><a href="#s18" data-t="Email Samples"></a><a href="#s19" data-t="Key Results"></a><a href="#s20" data-t="Case Study"></a><a href="#s21" data-t="Growth Loops"></a><a href="#s22" data-t="FAQ"></a><a href="#s23" data-t="About"></a><a href="#s24" data-t="The Offer"></a><a href="#s25" data-t="Get Started"></a>
+</nav>
+
+<!-- CARD 1: HERO -->
+<section class="dark hero" id="s1"><div class="w">
+<span class="label rv">MDB Growth Capital</span>
+<h1 class="rv d1">Camilla's Special <em>Vertical GTM</em> Package</h1>
+<p class="sub rv d2">How Cashflows Turns 5 Plus Verticals Into Vertical Specific Pipeline With the Right Messaging, Right Partnerships, and Measurable Merchant Acquisition</p>
+<div class="vid-box rv d3" id="videoEmbed"><div class="pb"></div></div>
+<div class="warn rv">
+<p>Do Not Skip The Video Above. It is a personalised walkthrough made for you and Cashflows only.</p>
+</div>
+<div class="callout rv">
+<p><strong>How This Document Can Help Cashflows</strong></p>
+<p>This doc was crafted solely for you, Camilla. Every detail fits Cashflows' vertical growth challenge perfectly. It is the exact go to market infrastructure to turn 5 plus verticals into vertical specific pipeline with measurable merchant acquisition.</p>
+<p class="wild">Our wild goal? Build Cashflows a vertical GTM engine that launches insurance, dental, and e-commerce propositions with the right messaging, right partnerships, and right metrics, converting 3x more merchants per vertical within 12 months.</p>
+</div>
+</div></section>
+
+<!-- CARD 2: WHAT'S INSIDE -->
+<section id="s2"><div class="w">
+<span class="label rv">What You Get</span>
+<h2 class="rv">What Is Inside Your Package?</h2>
+<div class="cg">
+<div class="cd rv"><div class="num">1</div><h3>Vertical GTM Leak Diagnosis</h3><p>Where Cashflows' merchant acquisition leaks before it becomes pipeline. Your website, content, vertical positioning, and sales enablement mapped layer by layer against the AAA framework. Red, Yellow, and Green grades for each.</p></div>
+<div class="cd rv d1"><div class="num">2</div><h3>Vertical Prioritisation Matrix</h3><p>Insurance, e-commerce, BNPL, dental, and property scored against market size, competitive density, and Cashflows fit. Which vertical to launch first. Which to defer.</p></div>
+<div class="cd rv d2"><div class="num">3</div><h3>Insurance Vertical Deep Dive</h3><p>Full value proposition, messaging framework, landing page architecture, and outbound targeting for the insurance and broker market. Built on the Markerstudy case study.</p></div>
+<div class="cd rv d3"><div class="num">4</div><h3>Competitive Positioning Analysis</h3><p>Cashflows vs Stripe vs Worldpay vs Dojo vs Adyen vs SumUp. Where you win. Where you are invisible. Where the gap is costing merchants.</p></div>
+<div class="cd rv"><div class="num">5</div><h3>Sample Cold Email Sequences</h3><p>Two graded email sequences targeting insurance brokers and e-commerce merchants. Ready to send. Scored against the Predicted Success Score methodology.</p></div>
+<div class="cd rv d1"><div class="num">6</div><h3>Revenue Gap Analysis</h3><p>The cost of running one generic pitch across 5 verticals: estimated 30 to 50% of addressable merchants unreachable. Mapped by vertical.</p></div>
+<div class="cd rv d2"><div class="num">7</div><h3>90 Day Insurance Vertical Launch Plan</h3><p>Week by week execution from ICP definition through first pipeline metrics. Built so the GTM Manager walks into a functioning system.</p></div>
+</div>
+</div></section>
+
+<!-- CARD 3: WHY CASHFLOWS -->
+<section class="alt" id="s3"><div class="w">
+<span class="label rv">The Research</span>
+<h2 class="rv">Why Cashflows? Why Now?</h2>
+<div class="callout rv"><p><strong>Signal 1: The leadership build.</strong><br>Cashflows hired 4 C suite executives in 2024. A Chief Commercial Officer (you, from Barclaycard). A Chief Product and Innovation Officer (Paul Clarke). A Chief People Officer (June Ahi). A Chief Risk Officer (Richard Wilkins). That is not maintenance hiring. That is building the leadership layer for the next growth phase.</p></div>
+<div class="callout rv d1"><p><strong>Signal 2: The execution gap.</strong><br>In March 2026, Cashflows posted a GTM Manager role asking this person to "build and own the frameworks and processes for all GTM programmes." Build frameworks. Own OKRs. Manage cross functional execution. Those are infrastructure tasks, not marketing tasks.</p></div>
+<div class="callout rv d2"><p><strong>Signal 3: The vertical paradox.</strong><br>Cashflows serves insurance brokers, dental practices, e-commerce brands, BNPL platforms, and property investors. SplitPay reports 20 to 30% merchant sales uplift. Get Found grew their client base 1,194%. But every vertical sees the same website, the same pitch, and the same "get a quote" form. The results exist. The distribution engine to scale those results across verticals does not.</p></div>
+<p class="rv d3">Camilla, the leadership is built. The products are strong. The vertical GTM machine to take those products to market is the missing piece. That is why this package exists.</p>
+</div></section>
+
+<!-- CARD 4: WHO BUILT THIS -->
+<section id="s4"><div class="w">
+<span class="label rv">Credibility</span>
+<h2 class="rv">Three Things Worth Knowing About How This Was Built</h2>
+<div class="mc rv d1">
+<div class="mt"><div class="mn">£30M</div><div class="ml">Pipeline generated at Santander in 30 days</div></div>
+<div class="mt"><div class="mn">15%</div><div class="ml">SMB revenue growth at BT/EE</div></div>
+<div class="mt"><div class="mn">£40M</div><div class="ml">Marketing budget managed at Santander</div></div>
+</div>
+<div class="callout rv d2"><p><strong>Enterprise scale, not agency guesswork.</strong> I spent 2 plus years at Santander managing marketing effectiveness across a £30 to 40 million budget, including a hyper targeted campaign that generated a £30 million Private Banking pipeline in 30 days. Before that, 3 plus years at BT leading performance marketing for SMB with 15% revenue growth.</p></div>
+<div class="callout rv d3"><p><strong>The research is real.</strong> I audited your entire website, mapped your competitive landscape (Stripe, Worldpay, Adyen, Dojo, SumUp, Elavon), read your case studies (Markerstudy, SplitPay, Get Found, BidX1), analysed 116 Trustpilot reviews, and reverse engineered every capability gap from your GTM Manager job description. This took hours, not minutes.</p></div>
+<p class="rv" style="font-size:.95rem;font-weight:600;margin-top:12px">The package itself is the proof. If this is what I give away for free, imagine what happens when we actually work together.</p>
+</div></section>
+
+<!-- CARD 5: THE GIFT -->
+<section class="alt" id="s5"><div class="w">
+<span class="label rv">The Gift</span>
+<h2 class="rv">What Cashflows Gets at No Cost</h2>
+<p class="rv d1">A complete <strong>Vertical GTM Audit and Launch Playbook</strong> showing exactly what each vertical needs to convert merchants at scale.</p>
+<div class="steps rv d2">
+<div class="stp"><div class="stp-c"><h3>Full AAA Diagnostic</h3><p>Attraction, Alignment, Activation scored across your current merchant acquisition</p></div></div>
+<div class="stp"><div class="stp-c"><h3>Vertical Prioritisation Matrix</h3><p>Insurance, e-commerce, dental, BNPL, and property scored and ranked</p></div></div>
+<div class="stp"><div class="stp-c"><h3>Insurance Vertical Deep Dive</h3><p>Value proposition, messaging, and landing page architecture for insurance brokers</p></div></div>
+<div class="stp"><div class="stp-c"><h3>Competitive Battle Cards</h3><p>Cashflows vs Stripe, Worldpay, and Dojo per vertical</p></div></div>
+<div class="stp"><div class="stp-c"><h3>Sample Cold Email Sequences</h3><p>Targeting insurance brokers and e-commerce merchants, ready to send</p></div></div>
+<div class="stp"><div class="stp-c"><h3>90 Day Insurance Launch Plan</h3><p>Weekly milestones so the GTM Manager walks into a functioning system</p></div></div>
+<div class="stp"><div class="stp-c"><h3>Repeatable Playbook Framework</h3><p>So each subsequent vertical launches in half the time</p></div></div>
+</div>
+<p class="rv d3" style="font-size:.88rem;color:var(--g5)">This is not a proposal. It is a working playbook. You could hand this to your GTM Manager on day one and they would know exactly what to build.</p>
+</div></section>
+
+<!-- CARD 6: CTA -->
+<section class="dark" id="s6"><div class="w" style="text-align:center">
+<h2 class="rv">2 Options To Get Started</h2>
+<div class="ctg rv d1">
+<div class="ctc"><h3>Just Reply</h3><p>Write back with any questions about the audit findings. I will send you the complete vertical GTM architecture in a format your team can action immediately.</p><a class="btn b-gh" href="mailto:">Reply to Email</a></div>
+<div class="ctc"><h3>Book A Call</h3><p>15 minutes. I will walk you through the audit findings live and show you exactly how the vertical GTM would work for Cashflows.</p><a class="btn b-ne" href="https://cal.com/jean-m-8f4kbr/15min" target="_blank">Book 15 Minutes</a></div>
+</div>
+<p class="rv d2" style="margin-top:16px;font-size:.82rem;color:var(--g4)">Either way, the audit is yours to keep. Use it however serves Cashflows best.</p>
+</div></section>
+
+<!-- CARD 7: AAA — ATTRACTION -->
+<section id="s7"><div class="w">
+<span class="label rv">Vertical GTM Audit</span>
+<h2 class="rv">Layer 1: Attraction — How Cashflows Gets Attention Today</h2>
+<div class="rv"><span class="tl yel"><span class="dot"></span>YELLOW — Attraction Score: 4 out of 10</span></div>
+<table class="rv d1" style="margin-top:16px">
+<thead><tr><th>Signal</th><th>Status</th><th>Finding</th></tr></thead>
+<tbody>
+<tr><td><strong>Organic Search (SEO)</strong></td><td><span class="tl red" style="font-size:.65rem"><span class="dot"></span>Not Active</span></td><td>"UK payment gateway," "merchant acquiring UK," "payment processing for insurance" — convertible searches with no content targeting them.</td></tr>
+<tr><td><strong>Paid Search (Google)</strong></td><td><span class="tl red" style="font-size:.65rem"><span class="dot"></span>Not Active</span></td><td>Merchant buyers search for payment solutions. Zero paid capture.</td></tr>
+<tr><td><strong>Paid Social (LinkedIn)</strong></td><td><span class="tl red" style="font-size:.65rem"><span class="dot"></span>Not Active</span></td><td>CFOs and operations leads at target verticals are on LinkedIn. No ads running.</td></tr>
+<tr><td><strong>Content Marketing</strong></td><td><span class="tl red" style="font-size:.65rem"><span class="dot"></span>PR Only</span></td><td>Blog is press releases and partnership announcements. Zero demand gen content.</td></tr>
+<tr><td><strong>Partnership Co-marketing</strong></td><td><span class="tl yel" style="font-size:.65rem"><span class="dot"></span>Minimal</span></td><td>Boodil partnership exists but no co-marketing activation visible.</td></tr>
+<tr><td><strong>PR and Media</strong></td><td><span class="tl grn" style="font-size:.65rem"><span class="dot"></span>Active</span></td><td>Strong coverage from C suite hires, awards, product launches.</td></tr>
+</tbody>
+</table>
+<div class="callout rv d2"><p><strong>Analysis:</strong> Cashflows gets attention through PR, Trustpilot (4.4/5), and direct relationships. None of these channels are vertical specific. An insurance broker searching "payment processing for insurance brokers" will find Worldpay and Stripe. Not Cashflows.</p></div>
+</div></section>
+
+<!-- CARD 8: AAA — ALIGNMENT -->
+<section class="alt" id="s8"><div class="w">
+<h2 class="rv">Layer 2: Alignment — Converting Interest to Pipeline</h2>
+<div class="rv"><span class="tl yel"><span class="dot"></span>YELLOW — Alignment Score: 4 out of 10</span></div>
+<table class="rv d1" style="margin-top:16px">
+<thead><tr><th>Signal</th><th>Status</th><th>Finding</th></tr></thead>
+<tbody>
+<tr><td><strong>Landing Pages</strong></td><td><span class="tl red" style="font-size:.65rem"><span class="dot"></span>Generic</span></td><td>No vertical specific pages. Insurance and dental get the same experience.</td></tr>
+<tr><td><strong>Pricing Transparency</strong></td><td><span class="tl red" style="font-size:.65rem"><span class="dot"></span>Hidden</span></td><td>Stripe publishes pricing. Cashflows requires a phone call. Price shoppers leave.</td></tr>
+<tr><td><strong>Lead Capture</strong></td><td><span class="tl red" style="font-size:.65rem"><span class="dot"></span>Minimal</span></td><td>Only "Get a quote" form. No gated content, no calculators, no comparison tools.</td></tr>
+<tr><td><strong>Case Study Activation</strong></td><td><span class="tl yel" style="font-size:.65rem"><span class="dot"></span>Exists but Disconnected</span></td><td>SplitPay, Markerstudy, Get Found case studies exist but not connected to vertical campaigns.</td></tr>
+<tr><td><strong>Lead Nurture</strong></td><td><span class="tl red" style="font-size:.65rem"><span class="dot"></span>No Sequences</span></td><td>No email nurture after initial inquiry. No retargeting.</td></tr>
+<tr><td><strong>Sales Enablement</strong></td><td><span class="tl yel" style="font-size:.65rem"><span class="dot"></span>Generic</span></td><td>No vertical specific collateral, no battle cards, no switching guides.</td></tr>
+</tbody>
+</table>
+<div class="bl rv d2">
+<h3>THE BIGGEST ALIGNMENT GAP</h3>
+<p>Cashflows has Interchange Plus Plus pricing (preferred by sophisticated merchants), Anytime Settlement (instant funds access), and 80% plus onboarding within 24 hours. But insurance brokers, dental practices, and e-commerce brands all land on the same generic page with the same "get a quote" form. The proof is there. The path from proof to pipeline is not.</p>
+</div>
+<div class="callout rv d3">
+<p><strong>Funnel Leak Map:</strong></p>
+<p style="font-size:.82rem;font-family:monospace;line-height:1.8">VISITOR &rarr; Generic Website &rarr; Get a Quote Form &rarr; ??? &rarr; Sales<br><br>Leak 1: No vertical segmentation. Insurance broker and dental practice get the same page<br>Leak 2: Pricing wall. Stripe shows pricing. Cashflows requires a call<br>Leak 3: Case studies are proof, not pipeline. Markerstudy results sit in a case study section, not driving insurance vertical leads<br>Leak 4: No nurture after inquiry. No email sequences. No retargeting</p>
+</div>
+</div></section>
+
+<!-- CARD 9: AAA — ACTIVATION -->
+<section id="s9"><div class="w">
+<h2 class="rv">Layer 3: Activation — How Cashflows Closes</h2>
+<div class="rv"><span class="tl grn"><span class="dot"></span>GREEN — Activation Score: 7 out of 10</span></div>
+<div class="cg rv d1">
+<div class="cd" style="border-left:3px solid var(--grn)"><h3>What Works</h3>
+<p>Fast onboarding: 80% plus applications within 24 hours. Anytime Settlement: instant access to funds. Dedicated relationship managers (Trustpilot reviews confirm). Tiered pricing engine rewards volume growth. FCA authorised, principal Visa/Mastercard member.</p></div>
+<div class="cd" style="border-left:3px solid var(--red)"><h3>What Is Missing</h3>
+<p>No vertical specific sales collateral. No competitive battle cards. No merchant switching playbook. The sales team closes well when merchants arrive. The problem is not enough merchants are arriving through vertical specific channels.</p></div>
+</div>
+<div class="bl rv d2">
+<h3>THE BIGGEST LEAK</h3>
+<p>The gap between product capability and vertical distribution. Cashflows has fast onboarding, Anytime Settlement, Interchange Plus Plus pricing, and principal membership with Visa and Mastercard. Case studies show 1,194% merchant growth and 20 to 30% sales uplift. But insurance brokers do not know this. Dental practices do not know this. E-commerce brands do not know this. Because every vertical gets the same generic website, the same "get a quote" form, and the same sales pitch. The products are strong. The activation layer works. The leak is between the market and the front door.</p>
+</div>
+</div></section>
+
+<!-- CARD 10: MONEY LEVERS -->
+<section class="alt" id="s10"><div class="w">
+<span class="label rv">High Impact Fixes</span>
+<h2 class="rv">5 Money Levers for Cashflows</h2>
+<p class="rv d1">Each lever addresses a specific gap identified in the audit.</p>
+<table class="rv d2">
+<thead><tr><th>Lever</th><th>Current State</th><th>Fix</th><th>Est. Impact</th></tr></thead>
+<tbody>
+<tr><td><strong>Vertical Landing Pages</strong></td><td>One generic website</td><td>3 vertical specific pages (insurance, dental, e-commerce) with tailored messaging</td><td class="impact">Est. 3x to 4x improvement in visitor to lead conversion per vertical</td></tr>
+<tr><td><strong>Pricing Transparency</strong></td><td>Requires phone call</td><td>Cost comparison calculator or indicative pricing by vertical</td><td class="impact">Est. 20 to 30% increase in quote requests</td></tr>
+<tr><td><strong>SEO Content Per Vertical</strong></td><td>PR only blog</td><td>4 articles per month targeting vertical merchant searches</td><td class="impact">Est. 200 to 400 organic visitors per month within 6 months</td></tr>
+<tr><td><strong>Competitive Comparison Pages</strong></td><td>None</td><td>"Cashflows vs Stripe for E-commerce" and "Cashflows vs Worldpay for Insurance"</td><td class="impact">Est. 5 to 10 high intent leads per month</td></tr>
+<tr><td><strong>Case Study Activation</strong></td><td>Exists but disconnected</td><td>Connect case studies to vertical landing pages with conversion CTAs</td><td class="impact">Est. 2x to 3x lead capture from existing case study traffic</td></tr>
+<tr class="total-row"><td colspan="3"><strong>Combined Estimated Impact</strong></td><td class="impact">30 to 50% more merchants per vertical compared to generic approach</td></tr>
+</tbody>
+</table>
+</div></section>
+
+<!-- CARD 11: FUNNEL CASCADE -->
+<section id="s11"><div class="w">
+<span class="label rv">Funnel Cascade</span>
+<h2 class="rv">How Cashflows Gets More Merchants and Converts Them</h2>
+
+<h3 class="rv" style="margin-top:16px">Top of Funnel: Getting Found by Vertical</h3>
+<table class="rv d1">
+<thead><tr><th>What Is Missing</th><th>What We Install</th></tr></thead>
+<tbody>
+<tr><td>No organic search strategy. No vertical specific content</td><td>SEO content per vertical targeting merchant buyer searches. LinkedIn Ads reaching finance and operations leads at insurance brokerages, dental groups, and e-commerce brands</td></tr>
+<tr><td>Zero paid media capture</td><td>Google Ads on high intent vertical terms. Vertical specific comparison pages</td></tr>
+<tr><td>Blog is press releases only</td><td>Vertical specific thought leadership and educational content</td></tr>
+</tbody>
+</table>
+
+<h3 class="rv d2" style="margin-top:24px">Middle of Funnel: Converting Interest by Vertical</h3>
+<table class="rv d2">
+<thead><tr><th>What Is Missing</th><th>What We Install</th></tr></thead>
+<tbody>
+<tr><td>Generic website with "get a quote" form</td><td>Vertical landing pages with tailored messaging per vertical</td></tr>
+<tr><td>Pricing hidden behind phone call</td><td>Pricing transparency or comparison calculator</td></tr>
+<tr><td>Case studies disconnected from campaigns</td><td>Gated vertical guides ("Switching Payment Providers: A Guide for Insurance Brokers"). Email nurture per vertical</td></tr>
+</tbody>
+</table>
+
+<h3 class="rv d3" style="margin-top:24px">Bottom of Funnel: Closing Merchants</h3>
+<table class="rv d3">
+<thead><tr><th>What Is Missing</th><th>What We Install</th></tr></thead>
+<tbody>
+<tr><td>No vertical specific sales collateral</td><td>Vertical specific sales one pagers and objection handling guides</td></tr>
+<tr><td>No competitive battle cards</td><td>Competitive battle cards per vertical (Cashflows vs Worldpay for insurance)</td></tr>
+<tr><td>No structured switching process</td><td>Merchant switching playbook. Cross sell triggers for Cashflows Advance and Cashflows Go</td></tr>
+</tbody>
+</table>
+</div></section>
+
+<!-- CARD 12: FULL FUNNEL VIEW -->
+<section class="dark" id="s12"><div class="w">
+<span class="label rv">The Full Picture</span>
+<h2 class="rv">How Every Piece Connects: Full Funnel View</h2>
+<p class="sub rv d1">Every recommendation in this package maps to a stage in Cashflows' merchant acquisition journey. Here is how each piece moves merchants from "never heard of Cashflows" to "signed and processing."</p>
+
+<div style="margin:28px 0" class="rv d2">
+
+<!-- TOP OF FUNNEL -->
+<div style="padding:24px;border-radius:10px 10px 0 0;background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.15);border-bottom:0">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px">
+<div style="font-size:1rem;font-weight:800;color:var(--amb)">Top of Funnel</div>
+<div style="font-size:.7rem;padding:3px 10px;border-radius:4px;background:rgba(245,158,11,.12);color:var(--amb);font-weight:600">GETTING FOUND — 4/10</div>
+</div>
+<p style="font-size:.85rem;color:var(--g4);margin-bottom:12px">Insurance broker searches "payment processing for insurance." Currently: finds Worldpay and Stripe. Not Cashflows.</p>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+<div style="padding:10px 12px;border-radius:6px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);font-size:.8rem">
+<strong style="color:var(--wh);font-size:.75rem">What we install:</strong>
+<ul style="margin:6px 0 0 14px;font-size:.78rem;color:var(--g4)">
+<li>SEO content per vertical</li>
+<li>LinkedIn Ads for vertical decision makers</li>
+<li>Google Ads on vertical payment searches</li>
+<li>Vertical comparison pages</li>
+</ul>
+</div>
+<div style="padding:10px 12px;border-radius:6px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);font-size:.8rem">
+<strong style="color:var(--wh);font-size:.75rem">What is missing now:</strong>
+<ul style="margin:6px 0 0 14px;font-size:.78rem;color:var(--g4)">
+<li>No vertical specific content</li>
+<li>No paid media running</li>
+<li>Blog is PR announcements only</li>
+<li>No comparison pages</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div style="text-align:center;padding:6px 0;background:var(--dk-s);font-size:.9rem;color:var(--g4)">&#8595;</div>
+
+<!-- MIDDLE OF FUNNEL -->
+<div style="padding:24px;background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.15);border-bottom:0;border-top:0">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px">
+<div style="font-size:1rem;font-weight:800;color:var(--amb)">Middle of Funnel</div>
+<div style="font-size:.7rem;padding:3px 10px;border-radius:4px;background:rgba(245,158,11,.12);color:var(--amb);font-weight:600">CONVERTING INTEREST — 4/10</div>
+</div>
+<p style="font-size:.85rem;color:var(--g4);margin-bottom:12px">Merchant is interested. Needs vertical specific proof, pricing clarity, and intermediate conversion steps. Currently: generic "get a quote" form for everyone.</p>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+<div style="padding:10px 12px;border-radius:6px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);font-size:.8rem">
+<strong style="color:var(--wh);font-size:.75rem">What we install:</strong>
+<ul style="margin:6px 0 0 14px;font-size:.78rem;color:var(--g4)">
+<li>Vertical landing pages with tailored messaging</li>
+<li>Pricing transparency or comparison calculator</li>
+<li>Gated vertical guides</li>
+<li>Email nurture per vertical</li>
+</ul>
+</div>
+<div style="padding:10px 12px;border-radius:6px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);font-size:.8rem">
+<strong style="color:var(--wh);font-size:.75rem">What is missing now:</strong>
+<ul style="margin:6px 0 0 14px;font-size:.78rem;color:var(--g4)">
+<li>No vertical segmentation</li>
+<li>Pricing requires a phone call</li>
+<li>Case studies disconnected from campaigns</li>
+<li>No nurture sequences</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div style="text-align:center;padding:6px 0;background:var(--dk-s);font-size:.9rem;color:var(--g4)">&#8595;</div>
+
+<!-- BOTTOM OF FUNNEL -->
+<div style="padding:24px;background:rgba(34,197,94,.06);border:1px solid rgba(34,197,94,.12);border-bottom:0;border-top:0">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px">
+<div style="font-size:1rem;font-weight:800;color:var(--grn)">Bottom of Funnel</div>
+<div style="font-size:.7rem;padding:3px 10px;border-radius:4px;background:rgba(34,197,94,.1);color:var(--grn);font-weight:600">CLOSING MERCHANTS — 7/10</div>
+</div>
+<p style="font-size:.85rem;color:var(--g4);margin-bottom:12px">Merchant is ready. Fast onboarding (80% plus in 24 hours), Anytime Settlement, dedicated relationship managers. The activation layer works.</p>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+<div style="padding:10px 12px;border-radius:6px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);font-size:.8rem">
+<strong style="color:var(--wh);font-size:.75rem">What we install:</strong>
+<ul style="margin:6px 0 0 14px;font-size:.78rem;color:var(--g4)">
+<li>Vertical specific sales collateral</li>
+<li>Competitive battle cards per vertical</li>
+<li>Merchant switching playbook</li>
+<li>Cross sell triggers (Advance, Go)</li>
+</ul>
+</div>
+<div style="padding:10px 12px;border-radius:6px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);font-size:.8rem">
+<strong style="color:var(--wh);font-size:.75rem">What is missing now:</strong>
+<ul style="margin:6px 0 0 14px;font-size:.78rem;color:var(--g4)">
+<li>No vertical sales enablement</li>
+<li>No competitive battle cards</li>
+<li>No structured switching process</li>
+<li>No cross sell playbook</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div style="text-align:center;padding:6px 0;background:var(--dk-s);font-size:.9rem;color:var(--g4)">&#8595;</div>
+
+<!-- SALE -->
+<div style="padding:24px;border-radius:0 0 10px 10px;background:rgba(255,204,137,.06);border:1px solid rgba(255,204,137,.12);border-top:0">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px">
+<div style="font-size:1rem;font-weight:800;color:var(--ne)">Sale</div>
+<div style="font-size:.7rem;padding:3px 10px;border-radius:4px;background:rgba(255,204,137,.1);color:#b8860b;font-weight:600">ACTIVATE AND RETAIN</div>
+</div>
+<p style="font-size:.85rem;color:var(--g4);margin-bottom:12px">Merchant signed and processing. Expand the relationship through Anytime Settlement, Cashflows Advance lending, and Cashflows Go reporting.</p>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+<div style="padding:10px 12px;border-radius:6px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);font-size:.8rem">
+<strong style="color:var(--wh);font-size:.75rem">What we install:</strong>
+<ul style="margin:6px 0 0 14px;font-size:.78rem;color:var(--g4)">
+<li>Vertical specific onboarding flows</li>
+<li>Cross sell triggers (Advance after 90 days)</li>
+<li>Referral programme per vertical</li>
+<li>Quarterly vertical reviews</li>
+</ul>
+</div>
+<div style="padding:10px 12px;border-radius:6px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);font-size:.8rem">
+<strong style="color:var(--wh);font-size:.75rem">What is missing now:</strong>
+<ul style="margin:6px 0 0 14px;font-size:.78rem;color:var(--g4)">
+<li>No structured cross sell</li>
+<li>No vertical specific onboarding</li>
+<li>No referral programme</li>
+<li>No vertical performance tracking</li>
+</ul>
+</div>
+</div>
+</div>
+
+</div>
+
+<p class="tagline rv" style="margin-top:16px">This is how every merchant moves from "never heard of Cashflows" to "signed, processing, and expanding."</p>
+</div></section>
+
+<!-- CARD 13: COMPETITIVE MAP -->
+<section id="s13"><div class="w">
+<span class="label rv">Competitive Landscape</span>
+<h2 class="rv">Where Cashflows Stands</h2>
+<div style="overflow-x:auto" class="rv d1">
+<table>
+<thead><tr><th>Capability</th><th style="background:var(--dk)">Cashflows</th><th>Stripe</th><th>Worldpay</th><th>Dojo</th></tr></thead>
+<tbody>
+<tr><td><strong>Pricing Model</strong></td><td>Interchange Plus Plus (preferred by sophisticated merchants)</td><td>Transparent flat rate (2.9% + 30p)</td><td>Enterprise custom</td><td>Flat rate per transaction</td></tr>
+<tr><td><strong>Onboarding Speed</strong></td><td>80% plus in 24 hours</td><td>Instant (self serve)</td><td>Days to weeks</td><td>Same day</td></tr>
+<tr><td><strong>Settlement</strong></td><td>Anytime (instant)</td><td>T+2 standard</td><td>T+2 to T+3</td><td>Next day</td></tr>
+<tr><td><strong>Vertical Positioning</strong></td><td>Generic</td><td>Developer first</td><td>Enterprise and retail</td><td>SME POS</td></tr>
+<tr><td><strong>Content Marketing</strong></td><td>PR announcements</td><td>Extensive (docs, guides, tutorials)</td><td>Enterprise whitepapers</td><td>SME focused blog</td></tr>
+<tr><td><strong>Pricing Transparency</strong></td><td>Requires phone call</td><td>Published on website</td><td>Requires inquiry</td><td>Published</td></tr>
+</tbody>
+</table>
+</div>
+<div class="callout rv d2"><p><strong>The paradox:</strong> Cashflows has two genuine differentiators (Anytime Settlement and fast onboarding) that matter enormously to merchants. But no content, no comparison pages, and no vertical messaging tell that story. Stripe wins developers with documentation. Worldpay wins enterprise with brand trust. Cashflows wins merchants who find them, but not enough merchants are finding them.</p></div>
+</div></section>
+
+<!-- CARD 14: THE GAP -->
+<section class="alt" id="s14"><div class="w">
+<span class="label rv">Strategic Opportunity</span>
+<h2 class="rv">The Gap Nobody Else Is Filling</h2>
+<p class="rv d1"><strong>No independent UK acquirer has built vertical specific go to market.</strong></p>
+<p class="rv d2">Stripe is horizontal (developer first, every vertical). Worldpay is horizontal (enterprise scale, every vertical). Dojo is horizontal (SME POS). Adyen is horizontal (unified commerce). Nobody is building the "payment partner for insurance brokers." Nobody is building the "payment partner for dental practices." Nobody is building vertical specific value propositions, vertical landing pages, and vertical outbound campaigns.</p>
+<div class="callout rv d3"><p>Cashflows already serves these verticals. You already have case studies proving results. The Markerstudy relationship gives you a head start in insurance that Stripe cannot replicate because Stripe does not do relationship based selling.</p>
+<p>The company that builds vertical specific GTM for payment processing will win the merchants who care about industry expertise over generic self serve. Right now, that company should be Cashflows.</p></div>
+</div></section>
+
+<!-- CARD 15: VERTICAL PRIORITISATION MATRIX -->
+<section id="s15"><div class="w">
+<span class="label rv">Vertical Strategy</span>
+<h2 class="rv">Vertical Prioritisation Matrix</h2>
+<p class="rv d1">Not all verticals should launch simultaneously. Here is the ranking based on market size, competitive density, existing proof, and Cashflows fit.</p>
+<div class="vpm rv d2">
+<div class="vp-card top"><div class="vp-rank">#1</div><div class="vp-name">Insurance</div><div class="vp-score">Largest market. Markerstudy case study. Lowest specialist competition. Launch first.</div></div>
+<div class="vp-card"><div class="vp-rank">#2</div><div class="vp-name">E-commerce</div><div class="vp-score">Get Found case study (1,194% growth). High volume. Stripe dominant but beatable on service.</div></div>
+<div class="vp-card"><div class="vp-rank">#3</div><div class="vp-name">Dental</div><div class="vp-score">Recurring billing fit. Low competition for vertical specific payment processing.</div></div>
+<div class="vp-card"><div class="vp-rank">#4</div><div class="vp-name">BNPL</div><div class="vp-score">SplitPay case study (20 to 30% sales uplift). Partnership model. Defer to Q2.</div></div>
+<div class="vp-card"><div class="vp-rank">#5</div><div class="vp-name">Property</div><div class="vp-score">BidX1 case study. Niche market. Launch after insurance and e-commerce prove the model.</div></div>
+</div>
+<div class="callout rv d3"><p><strong>Why insurance first:</strong> Largest addressable market among the five verticals. Existing Markerstudy case study provides immediate proof. No competitor has built "payment processing for insurance brokers" as a vertical proposition. The GTM playbook built for insurance becomes the template for every subsequent vertical.</p></div>
+</div></section>
+
+<!-- CARD 16: 90 DAY PLAN WEEKS 1-6 -->
+<section class="alt" id="s16"><div class="w">
+<span class="label rv">90 Day Roadmap</span>
+<h2 class="rv">Insurance Vertical Launch: Weeks 1 to 6</h2>
+
+<div class="wk rv"><div class="wn">Week 1 <span style="float:right;font-size:.6rem;padding:2px 6px;border-radius:3px;background:rgba(255,97,0,.1);color:var(--or)">FOUNDATION</span></div><h3>Define Insurance ICP</h3><p>Define insurance vertical ICP: broker size, transaction volume, current provider, switching triggers. Map the insurance buyer journey from awareness through onboarding.</p></div>
+
+<div class="wk rv"><div class="wn">Week 2 <span style="float:right;font-size:.6rem;padding:2px 6px;border-radius:3px;background:rgba(255,97,0,.1);color:var(--or)">FOUNDATION</span></div><h3>Insurance Value Proposition</h3><p>Build insurance specific value proposition: "The payment partner built for insurance brokers and Managing General Agents." Draft messaging framework. Analyse Markerstudy case study for reusable proof points.</p></div>
+
+<div class="wk rv"><div class="wn">Week 3 <span style="float:right;font-size:.6rem;padding:2px 6px;border-radius:3px;background:rgba(245,158,11,.1);color:var(--amb)">BUILD</span></div><h3>Insurance Landing Page</h3><p>Build insurance vertical landing page with tailored messaging, Markerstudy case study integration, and insurance specific CTAs. Set up vertical tracking in CRM.</p></div>
+
+<div class="wk rv"><div class="wn">Week 4 <span style="float:right;font-size:.6rem;padding:2px 6px;border-radius:3px;background:rgba(245,158,11,.1);color:var(--amb)">BUILD</span></div><h3>First Gated Asset</h3><p>Create first gated asset: "Payment Processing for Insurance Brokers: What to Look For When Switching Providers." Build 4 email nurture sequence for insurance leads.</p></div>
+
+<div class="wk rv"><div class="wn">Week 5 <span style="float:right;font-size:.6rem;padding:2px 6px;border-radius:3px;background:rgba(34,197,94,.1);color:var(--grn)">LAUNCH</span></div><h3>LinkedIn Ads Live</h3><p>Launch LinkedIn Ads targeting insurance operations leads and finance directors at brokerages. A/B test 3 ad variations. Budget: £2,000 to £3,000 per month.</p></div>
+
+<div class="wk rv"><div class="wn">Week 6 <span style="float:right;font-size:.6rem;padding:2px 6px;border-radius:3px;background:rgba(34,197,94,.1);color:var(--grn)">LAUNCH</span></div><h3>SEO Content and Case Study Activation</h3><p>Publish 4 vertical articles: "How Insurance Brokers Can Reduce Payment Processing Costs," "Recurring Billing for Insurance Premiums," "PCI Compliance for Brokerages," "Cashflows vs Worldpay for Insurance." Activate Markerstudy case study as conversion asset.</p></div>
+</div></section>
+
+<!-- CARD 17: 90 DAY PLAN WEEKS 7-12 -->
+<section id="s17"><div class="w">
+<h2 class="rv">Insurance Vertical Launch: Weeks 7 to 12</h2>
+
+<div class="wk rv"><div class="wn">Week 7 <span style="float:right;font-size:.6rem;padding:2px 6px;border-radius:3px;background:rgba(34,197,94,.1);color:var(--grn)">SCALE</span></div><h3>Google Ads Launch</h3><p>Launch Google Ads on "insurance payment processing," "broker payment solution," "insurance premium collection." Budget: £1,500 to £2,500 per month.</p></div>
+
+<div class="wk rv"><div class="wn">Week 8 <span style="float:right;font-size:.6rem;padding:2px 6px;border-radius:3px;background:rgba(34,197,94,.1);color:var(--grn)">SCALE</span></div><h3>Sales Collateral and Outbound</h3><p>Build insurance specific sales collateral: one pager, objection handling guide, switching checklist, competitive battle card (Cashflows vs Worldpay for insurance). Start first outbound campaign targeting top 50 insurance brokerages.</p></div>
+
+<div class="wk rv"><div class="wn">Week 9 <span style="float:right;font-size:.6rem;padding:2px 6px;border-radius:3px;background:rgba(245,158,11,.1);color:var(--amb)">OPTIMISE</span></div><h3>30 Day Data Review</h3><p>Review first 30 days of insurance vertical data: leads, conversion rates, CAC per channel. A/B test landing page (headline, CTA, form fields). Identify 3 insurance partnership opportunities.</p></div>
+
+<div class="wk rv"><div class="wn">Week 10 <span style="float:right;font-size:.6rem;padding:2px 6px;border-radius:3px;background:rgba(255,204,137,.1);color:#b8860b">EXPAND</span></div><h3>Dental Vertical Launch</h3><p>Launch dental vertical using the same playbook framework. Dental landing page. Dental value proposition. Dental gated content. Dental outbound list.</p></div>
+
+<div class="wk rv"><div class="wn">Week 11 <span style="float:right;font-size:.6rem;padding:2px 6px;border-radius:3px;background:rgba(255,204,137,.1);color:#b8860b">EXPAND</span></div><h3>Content Expansion and Referral</h3><p>Expand insurance content to 2 articles per week. Build merchant referral programme for existing insurance clients. Set up dental LinkedIn Ads.</p></div>
+
+<div class="wk rv"><div class="wn">Week 12 <span style="float:right;font-size:.6rem;padding:2px 6px;border-radius:3px;background:rgba(255,204,137,.1);color:#b8860b">HANDOVER</span></div><h3>Pipeline Report and Playbook Handoff</h3><p>Report first vertical GTM metrics to leadership: insurance leads, dental leads, conversion rates, CAC, pipeline value. Document the repeatable vertical launch playbook. Set up quarterly vertical review with commercial team.</p></div>
+
+<div class="qw rv">
+<h3>Quick Wins (Starting Now)</h3>
+<ul>
+<li>Connect the Markerstudy case study to a dedicated insurance landing page with a "Get a Quote for Insurance" CTA. Right now, the case study is a dead end.</li>
+<li>Publish pricing guidance. Even indicative ranges reduce friction. Stripe publishes pricing because transparency converts.</li>
+<li>Build one comparison page: "Cashflows vs Stripe for E-commerce." High intent search, zero competition for this query.</li>
+</ul>
+</div>
+</div></section>
+
+<!-- CARD 18: SAMPLE EMAILS -->
+<section class="alt" id="s18"><div class="w">
+<span class="label rv">Sample Deliverable</span>
+<h2 class="rv">Vertical Email Sequences</h2>
+<p class="rv d1">Camilla, here are sample emails your team could send to insurance brokers and e-commerce merchants. These demonstrate what vertical specific outbound looks like.</p>
+
+<div style="background:var(--wh);border:1px solid #e5e7eb;border-radius:10px;padding:22px;margin:16px 0" class="rv d2">
+<div style="font-size:.68rem;font-weight:700;color:var(--or);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px">Email 1: Insurance Broker — Trigger Angle</div>
+<p style="font-size:.88rem;font-weight:700;margin-bottom:12px">Subject: settlement speed for your premium payments</p>
+<p style="font-size:.85rem;color:var(--g5)">[First Name], insurance brokers collecting premiums through card processing typically wait 2 to 3 days for settlement. That is cash flow sitting in someone else's account.</p>
+<p style="font-size:.85rem;color:var(--g5)">Cashflows settles same day. No waiting. For a brokerage processing £500,000 per month in premiums, that is £33,000 to £50,000 in float returned to your balance sheet.</p>
+<p style="font-size:.85rem;color:var(--g5)">Markerstudy Group switched to Cashflows and called the experience "flexible and dedicated." Their compliance team approved onboarding within 24 hours.</p>
+<p style="font-size:.85rem;color:var(--g5)">Two questions worth a 10 minute conversation:</p>
+<p style="font-size:.85rem;color:var(--g5);padding-left:16px">1. How much float are you carrying because your current provider settles T plus 2?<br>2. Would same day settlement change how you manage cash across your book?</p>
+<p style="font-size:.85rem;color:var(--g5);font-weight:600">Worth a quick call?</p>
+</div>
+
+<div style="background:var(--wh);border:1px solid #e5e7eb;border-radius:10px;padding:22px;margin:16px 0" class="rv d3">
+<div style="font-size:.68rem;font-weight:700;color:var(--or);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px">Email 2: E-commerce Brand — Friction Angle</div>
+<p style="font-size:.88rem;font-weight:700;margin-bottom:12px">Subject: your checkout is losing 3 in 10</p>
+<p style="font-size:.85rem;color:var(--g5)">[First Name], the average UK e-commerce checkout abandonment rate is 70%. Most of that is friction: too many form fields, no Apple Pay, no saved card.</p>
+<p style="font-size:.85rem;color:var(--g5)">Cashflows processes Apple Pay, Google Pay, Samsung Pay, PayPal, and saved card on file in a single gateway. One integration. Every payment method. One of our e-commerce clients (Get Found) grew their client base 1,194% and monthly card turnover 897% in 18 months.</p>
+<p style="font-size:.85rem;color:var(--g5)">One question: what is your current checkout completion rate? If it is below 35%, there is likely a payment friction problem. I have a one page breakdown showing where the drop off happens.</p>
+<p style="font-size:.85rem;color:var(--g5);font-weight:600">Should I send it?</p>
+</div>
+</div></section>
+
+<!-- CARD 19: KEY RESULTS -->
+<section class="dark" id="s19"><div class="w">
+<span class="label rv">Expected Results</span>
+<h2 class="rv">What Cashflows Can Expect</h2>
+
+<h3 class="rv d1" style="color:var(--ne);margin-top:16px">30 Day Results</h3>
+<div class="mc rv d1">
+<div class="mt"><div class="mn">1</div><div class="ml">Insurance ICP defined and buyer journey mapped</div></div>
+<div class="mt"><div class="mn">1</div><div class="ml">Insurance landing page live with Markerstudy integration</div></div>
+<div class="mt"><div class="mn">First</div><div class="ml">Gated content asset generating insurance leads</div></div>
+</div>
+
+<h3 class="rv d2" style="color:var(--ne);margin-top:24px">90 Day Results</h3>
+<div class="mc rv d2">
+<div class="mt"><div class="mn">15-25</div><div class="ml">New insurance merchant leads per month</div></div>
+<div class="mt"><div class="mn">2</div><div class="ml">Verticals launched (insurance + dental)</div></div>
+<div class="mt"><div class="mn">Live</div><div class="ml">Competitive battle cards in use by sales team</div></div>
+</div>
+
+<h3 class="rv d3" style="color:var(--ne);margin-top:24px">12 Month Results</h3>
+<div class="mc rv d3">
+<div class="mt"><div class="mn">3</div><div class="ml">Verticals fully launched with vertical specific GTM</div></div>
+<div class="mt"><div class="mn">30-50%</div><div class="ml">More merchants per vertical vs generic approach</div></div>
+<div class="mt"><div class="mn">Repeatable</div><div class="ml">Playbook enabling quarterly vertical launches</div></div>
+</div>
+</div></section>
+
+<!-- CARD 20: CASE STUDY -->
+<section id="s20"><div class="w">
+<span class="label rv">Proof</span>
+<h2 class="rv">Case Study: £30M Pipeline in 30 Days</h2>
+<div class="cs rv d1">
+<div class="cs-p ctx"><h3>Context</h3><p>Santander Private Banking needed to reach High Net Worth Individuals for their private banking services. Traditional broad marketing was generating volume but not the right quality.</p></div>
+<div class="cs-p act"><h3>Action</h3><p>I designed a hyper targeted LinkedIn campaign that identified HNWI behavioural signals and served personalised content sequences. The campaign replaced broad targeting with signal based precision. 38 new HNWI clients acquired in 30 days.</p></div>
+<div class="cs-p res"><h3>Result</h3><p><strong>£30 million pipeline generated. 7x the results of the previous approach.</strong> The methodology: identify the exact buyer profile, build content that speaks their language, deliver it through the channel where they actually engage.</p></div>
+</div>
+<div class="callout rv d2"><p><strong>Why this matters for Cashflows:</strong> Vertical GTM is the same principle. Instead of one generic message to all merchants, you target insurance brokers with insurance language, dental practices with dental language, and e-commerce brands with e-commerce language. The targeting methodology that generated £30 million for Santander is the same framework that would generate vertical merchant pipeline for Cashflows.</p></div>
+</div></section>
+
+<!-- CARD 21: GROWTH FEEDBACK LOOPS -->
+<section class="dark" id="s21"><div class="w">
+<span class="label rv">How It Compounds</span>
+<h2 class="rv">The Growth Feedback Loop</h2>
+<p class="sub rv">Not a one time project. A system that gets smarter with every vertical launched.</p>
+
+<div class="mf rv d1">
+<div class="ms"><div class="msn">1</div><h3>Test</h3><p>Launch vertical with hypothesis</p></div>
+<div class="ma">&#8594;</div>
+<div class="ms"><div class="msn">2</div><h3>Measure</h3><p>Track every channel per vertical</p></div>
+<div class="ma">&#8594;</div>
+<div class="ms"><div class="msn">3</div><h3>Learn</h3><p>Which vertical? Which channel?</p></div>
+<div class="ma">&#8594;</div>
+<div class="ms"><div class="msn">4</div><h3>Scale</h3><p>3x budget on winners</p></div>
+<div class="ma">&#8594;</div>
+<div class="ms"><div class="msn">5</div><h3>Document</h3><p>Playbook for next vertical</p></div>
+</div>
+
+<div class="callout rv d2" style="margin-top:20px;background:rgba(255,204,137,.04);border-color:rgba(255,204,137,.2)">
+<p style="font-size:.85rem"><strong>Loop 1: Vertical Proof Loop.</strong> First insurance merchant signed creates a case study. Case study feeds the insurance landing page. Landing page converts more insurance leads. More insurance merchants create more case studies. Each vertical that proves results accelerates the next.</p>
+</div>
+<div class="callout rv d3" style="margin-top:12px;background:rgba(255,97,0,.04);border-color:rgba(255,97,0,.2)">
+<p style="font-size:.85rem"><strong>Loop 2: Cross Sell and Expansion Loop.</strong> Insurance merchant using payment gateway discovers Cashflows Advance (lending) and Cashflows Go (reporting). Each additional product deepens the relationship and increases switching cost. Cross sell feeds retention. Retention feeds revenue.</p>
+</div>
+<div class="callout rv" style="margin-top:12px;background:rgba(34,197,94,.04);border-color:rgba(34,197,94,.2)">
+<p style="font-size:.85rem"><strong>Loop 3: Test, Measure, Learn, Scale, Document.</strong> Every vertical launch (LinkedIn Ads, SEO content, outbound sequence, landing page) is an experiment. Weekly: review data. Monthly: kill what does not work, scale what does. Document the playbook. The next vertical launches faster because the first one taught you what works.</p>
+</div>
+
+<p class="tagline rv" style="margin-top:16px">This is how Cashflows builds a merchant acquisition engine that compounds. Not by running one generic pitch across 5 verticals. By building a system that learns what works per vertical and scales it.</p>
+</div></section>
+
+<!-- CARD 22: FAQ -->
+<section id="s22"><div class="w">
+<span class="label rv">Questions</span>
+<h2 class="rv">Frequently Asked Questions</h2>
+<div class="rv d1">
+<div class="fq"><div class="fq-q">Why is this free?<span class="ic">+</span></div><div class="fq-a">Because the package itself is the proof. If this vertical GTM audit gives Cashflows more clarity than anything you have seen from agencies, that tells you everything about what working together would look like.</div></div>
+<div class="fq"><div class="fq-q">What is the catch?<span class="ic">+</span></div><div class="fq-a">There is no catch. If the audit is useful, I would welcome 15 minutes to discuss implementation. If not, keep the research and go build the vertical GTM yourselves.</div></div>
+<div class="fq"><div class="fq-q">Do we not just need the GTM Manager hire?<span class="ic">+</span></div><div class="fq-a">You absolutely need the hire. The question is whether that person spends 3 to 6 months building frameworks from scratch or walks into a functioning system with vertical playbooks ready to execute.</div></div>
+<div class="fq"><div class="fq-q">How is this different from an agency?<span class="ic">+</span></div><div class="fq-a">Agencies bill monthly and optimise for retention. MDB installs assets you own. The vertical playbooks, the landing pages, the email sequences, the competitive battle cards. All of it sits on your balance sheet permanently.</div></div>
+<div class="fq"><div class="fq-q">Can you work across regulated payment verticals?<span class="ic">+</span></div><div class="fq-a">I managed a £30 to 40 million marketing budget at Santander, one of the UK's most regulated financial institutions. I understand FCA compliance, PCI requirements, and the constraints of marketing financial services. This audit was built with those constraints in mind.</div></div>
+<div class="fq"><div class="fq-q">We serve 5 plus verticals. Can you cover all of them?<span class="ic">+</span></div><div class="fq-a">Not simultaneously. That is why the audit includes a prioritisation matrix. Insurance first (largest market, existing proof, lowest specialist competition). Dental second. Each subsequent launch takes half the time because the playbook already exists.</div></div>
+</div>
+</div></section>
+
+<!-- CARD 23: ABOUT JEAN -->
+<section class="alt" id="s23"><div class="w">
+<span class="label rv">About</span>
+<h2 class="rv">Jean Mundabi Fala</h2>
+<div class="ab rv d1">
+<div class="av">JM</div>
+<div class="ab-i">
+<h3>Jean Mundabi Fala</h3>
+<div class="role">CEO, MDB Growth Capital</div>
+<p style="font-size:.88rem">5 plus years building marketing effectiveness systems at enterprise scale. Santander: £30 to 40 million budget, £30 million Private Banking pipeline, team of 4 marketing specialists. BT: 15% SMB revenue growth, 25% lead acquisition improvement, built the single source of truth used by Marketing, Finance, and Commercial.</p>
+<p style="font-size:.88rem">Today: building go to market infrastructure for B2B companies. Vertical GTM playbooks, merchant acquisition systems, and conversion architecture that sits on the client's balance sheet permanently.</p>
+<a href="https://linkedin.com/in/jeanmundabi" target="_blank" class="ln-btn">Connect on LinkedIn</a>
+</div>
+</div>
+</div></section>
+
+<!-- CARD 24: THE OFFER -->
+<section class="dark" id="s24"><div class="w">
+<span class="label rv">The Offer</span>
+<h2 class="rv">Everything here is yours to keep.</h2>
+<p class="rv sub">Use the AAA Diagnostic. Implement the 90 day roadmap. Brief your GTM Manager with the vertical launch playbook. Hand them the insurance deep dive on day one. No strings attached.</p>
+<p class="rv d1" style="margin-top:16px"><strong>If you want to go further:</strong></p>
+<ul class="ol rv d2" style="margin:10px 0 20px">
+<li>Full vertical GTM installation across insurance, e-commerce, and dental</li>
+<li>Vertical landing pages with tailored messaging per vertical</li>
+<li>Competitive battle cards per vertical (Cashflows vs Stripe, Worldpay, Dojo)</li>
+<li>Cold email sequences targeting merchants in each vertical</li>
+<li>Pricing transparency strategy and comparison calculators</li>
+<li>Merchant referral programme architecture</li>
+<li>90 day hands on build with your commercial team</li>
+</ul>
+<p class="rv d3" style="font-size:.85rem;color:var(--g4)">Investment: Let us discuss it on a call. We will show you the economics first.</p>
+</div></section>
+
+<!-- CARD 25: FINAL CTA + CAL.COM -->
+<section class="dark" id="s25" style="padding-bottom:32px"><div class="w">
+<h2 class="rv">2 Options To Get Started</h2>
+<div class="ctg rv d1">
+<div class="ctc"><h3>Just Reply</h3><p>Write back with any questions. I will send you the complete vertical GTM architecture. No commitment.</p><a class="btn b-gh" href="mailto:">Reply to Email</a></div>
+<div class="ctc"><h3>Book A Call</h3><p>15 minutes. I will walk you through the audit, the vertical prioritisation, and the 90 day insurance launch plan.</p><a class="btn b-ne" href="https://cal.com/jean-m-8f4kbr/15min" target="_blank">Book 15 Minutes</a></div>
+</div>
+
+<div style="margin-top:32px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:24px" class="rv d2">
+<h3 style="text-align:center;margin-bottom:16px;color:var(--ne)">Pick a Time That Works</h3>
+<div id="my-cal-inline" style="width:100%;min-height:400px;border-radius:8px;overflow:hidden"></div>
+</div>
+
+<p class="rv d3" style="margin-top:24px;font-size:1rem;line-height:1.6">Camilla, Cashflows has the leadership team, the products, and the PE backing. The vertical GTM engine to convert all of that into merchant pipeline across 5 verticals is the missing piece. That engine is mapped inside this package. The insurance launch plan is ready. The playbook is documented. The GTM Manager walks into a system, not a blank page.</p>
+<p class="rv" style="margin-top:12px;font-size:1.05rem;font-weight:700">Read it. Then decide.</p>
+<p style="margin-top:16px;font-style:italic;font-size:.85rem;color:var(--g4)">Jean Mundabi Fala<br>MDB Growth Capital</p>
+<p style="margin-top:10px;font-size:.8rem;color:var(--g4)"><strong>PS</strong> — Your GTM Manager job description lists 6 capability gaps: vertical value propositions, cross functional orchestration, programme documentation, sales enablement, portfolio analysis, and OKR ownership. This package addresses every one of them with a working playbook. That is either useful to you, or it is not. Either way, Cashflows keeps the research.</p>
+
+<footer>
+<p style="margin-bottom:4px">Prepared exclusively for Camilla Sunner, Chief Commercial Officer — Cashflows</p>
+<p>By Jean Mundabi Fala, CEO — MDB Growth Capital</p>
+<p style="margin-top:8px">Strategy and GTM research by Jean Mundabi Fala</p>
+</footer>
+</div></section>
+
+<script>
+// Reveal on scroll
+const o=new IntersectionObserver(e=>{e.forEach(i=>{if(i.isIntersecting){i.target.classList.add('on');o.unobserve(i.target)}})},{threshold:.08,rootMargin:'0px 0px -20px 0px'});
+document.querySelectorAll('.rv').forEach(el=>o.observe(el));
+
+// Side nav scroll tracking
+const secs=document.querySelectorAll('section[id]');
+const dots=document.querySelectorAll('.sn a');
+const no=new IntersectionObserver(e=>{e.forEach(i=>{if(i.isIntersecting){dots.forEach(d=>d.classList.remove('ac'));const d=document.querySelector(`.sn a[href="#${i.target.id}"]`);if(d)d.classList.add('ac')}})},{threshold:.2,rootMargin:'-5% 0px -60% 0px'});
+secs.forEach(s=>no.observe(s));
+
+// FAQ accordion
+document.querySelectorAll('.fq-q').forEach(q=>{q.addEventListener('click',()=>{const f=q.parentElement,w=f.classList.contains('open');document.querySelectorAll('.fq').forEach(x=>x.classList.remove('open'));if(!w)f.classList.add('open')})});
+
+// Video embed (auto-detect when URL is changed from placeholder)
+const ve=document.getElementById('videoEmbed');
+const vu='VIDEO_URL_GOES_HERE';
+if(vu&&vu!=='VIDEO_URL_GOES_HERE'){
+let eu='';
+if(vu.includes('loom.com')){eu=`https://www.loom.com/embed/${vu.split('/').pop().split('?')[0]}`}
+else if(vu.includes('youtube.com')||vu.includes('youtu.be')){const id=vu.includes('youtu.be')?vu.split('/').pop():new URLSearchParams(new URL(vu).search).get('v');eu=`https://www.youtube.com/embed/${id}`}
+else if(vu.includes('vimeo.com')){eu=`https://player.vimeo.com/video/${vu.split('/').pop().split('?')[0]}`}
+else if(vu.includes('tella.tv')){eu=vu.replace('/video/','/embed/')}
+if(eu){ve.innerHTML=`<iframe src="${eu}" style="width:100%;height:100%;border:none;border-radius:12px" allowfullscreen></iframe>`}
+}
+</script>
+
+<!-- Cal.com Embed -->
+<script type="text/javascript">
+(function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+Cal("init", {origin:"https://cal.com"});
+Cal("inline", { elementOrSelector:"#my-cal-inline", calLink: "jean-m-8f4kbr/15min", layout: "month_view" });
+Cal("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+</script>
+
+</body>
+</html>
